@@ -1,0 +1,144 @@
+{
+  
+    "name": "dreamproject",
+  
+    "version": "1.0.0",
+  
+    "description": "DreamBoard",
+  
+    "author": "Kouichi <jpr64914@gmail.com>",
+  
+    "scripts": {
+  
+      
+    "compile": "tsc && webpack --config webpack.config.js",
+  
+      
+    "start": "npm run compile && electron .",
+  
+      
+    "dev": "concurrently \"tsc -w\" \"webpack --watch\" \"electron .\"",
+  
+      
+    "pack": "electron-builder --dir",
+  
+      
+    "dist": "npm run compile && electron-builder --publish never"
+  
+    },
+  
+    "build": {
+  
+      
+    "appId": "com.yourcompany.dreamboard",
+  
+      
+    "productName": "DreamBoard",
+  
+      
+    "files": [
+  
+      
+      
+    "dist/**/*",
+  
+      
+      
+    "index.html",
+  
+      
+      
+    "package.json",
+  
+      
+      
+    "assets/**/*",
+  
+      
+      
+    "src/**/*"
+  
+      
+    ],
+  
+      
+    "directories": {
+  
+      
+      
+    "output": "release",
+  
+      
+      
+    "buildResources": "assets"
+  
+      
+    },
+  
+      
+    "mac": {
+  
+      
+      
+    "category": "public.app-category.productivity"
+  
+      
+    }
+  
+    },
+  
+    "devDependencies": {
+  
+      
+    "@svgr/webpack": "^8.1.0",
+  
+      
+    "concurrently": "^8.2.2",
+  
+      
+    "electron": "^27.0.0",
+  
+      
+    "electron-builder": "^25.0.5",
+  
+      
+    "electron-reload": "^1.5.0",
+  
+      
+    "file-loader": "^6.2.0",
+  
+      
+    "ts-loader": "^9.4.3",
+  
+      
+    "typescript": "^5.6.2",
+  
+      
+    "webpack": "^5.88.0",
+  
+      
+    "webpack-cli": "^5.1.4"
+  
+    },
+  
+    "dependencies": {
+  
+      
+    "@types/glob": "^8.1.0",
+  
+      
+    "@types/react": "^18.0.28",
+  
+      
+    "@types/react-dom": "^18.0.11",
+  
+      
+    "react": "^18.2.0",
+  
+      
+    "react-dom": "^18.2.0"
+  
+    },
+  
+    "main": "dist/main.js"
+}
