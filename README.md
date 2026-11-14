@@ -1,55 +1,37 @@
-# DreamBoard
+# DreamBoard｜Electron 桌面便利貼原型
 
-## 中文（繁體）
+DreamBoard 是以 Electron、React 與 TypeScript 開發的桌面便利貼應用原型。使用者可以建立文字便利貼、匯入圖片、拖曳便利貼位置，以及刪除不需要的便利貼。
 
-DreamBoard 是一個電子便利貼應用程式，讓用戶可以輕鬆創建、編輯和組織他們的想法。
+## 功能
 
-### 功能：
-- 創建文字和圖片便利貼
-- 拖放便利貼到任何位置
-- 調整文字便利貼的大小
-- 自動保存，確保您的想法不會丟失
-- 點擊便利貼時，將其移到最上層
+- 新增文字便利貼，並直接編輯內容。
+- 從本機選擇圖片，建立圖片便利貼。
+- 使用滑鼠拖曳便利貼至視窗中的其他位置。
+- 刪除文字或圖片便利貼。
+- 以 Electron 建立桌面視窗，並使用 React 呈現互動介面。
 
-### 如何使用：
-1. 點擊綠色按鈕添加文字便利貼
-2. 點擊藍色按鈕添加圖片便利貼
-3. 拖動便利貼到任何位置
-4. 對於文字便利貼，可以通過右下角調整大小
-5. 點擊便利貼上的垃圾桶圖標刪除它
+## 技術
 
-## English
+- Electron 27
+- React 18
+- TypeScript 5
+- Webpack 5、ts-loader、SVGR
+- electron-builder
 
-DreamBoard is a digital sticky note application that allows users to easily create, edit, and organize their ideas.
+## 專案架構
 
-### Features:
-- Create text and image sticky notes
-- Drag and drop notes anywhere on the board
-- Resize text notes
-- Auto-save functionality to ensure your ideas are never lost
-- Bring a note to the front when clicked
+- `src/main.ts`：Electron 主程序，建立 BrowserWindow。
+- `src/renderer.tsx`：React renderer 入口。
+- `src/components/DreamBoard.tsx`：便利貼狀態、建立、拖曳、編輯及刪除邏輯。
+- `webpack.config.js`：renderer bundle 設定。
+- `index.html`：React 掛載頁面。
 
-### How to Use:
-1. Click the green button to add a text note
-2. Click the blue button to add an image note
-3. Drag notes to any position
-4. For text notes, resize using the handle in the bottom-right corner
-5. Click the trash can icon on a note to delete it
+## 目前實作界線
 
-## 日本語
+- 便利貼資料只存在 React state，沒有 localStorage、檔案或資料庫持久化；關閉應用後不保證保留內容。
+- README 早期版本提及的自動儲存、點擊後移至最上層及文字便利貼調整大小，現有程式碼沒有對應實作，因此不列為已完成功能。
+- 拖曳目前以滑鼠事件為主，沒有觸控操作流程。
+- Electron 設定啟用 `nodeIntegration` 並停用 `contextIsolation`，且啟動時會開啟 DevTools；這是原型設定，不應直接視為已完成安全強化的桌面產品。
+- 本次依程式碼整理，未重新安裝套件、打包或執行桌面應用。
 
-DreamBoardは、ユーザーがアイデアを簡単に作成、編集、整理できるデジタル付箋アプリケーションです。
-
-### 機能：
-- テキストと画像の付箋を作成
-- 付箋をボード上の任意の場所にドラッグ＆ドロップ
-- テキスト付箋のサイズ変更
-- 自動保存機能でアイデアを失うことはありません
-- クリックした付箋を最前面に表示
-
-### 使用方法：
-1. 緑のボタンをクリックしてテキスト付箋を追加
-2. 青いボタンをクリックして画像付箋を追加
-3. 付箋を任意の位置にドラッグ
-4. テキスト付箋は右下のハンドルでサイズ変更可能
-5. 付箋上のゴミ箱アイコンをクリックして削除
+完整程式證據與技術回顧請參閱 [PROJECT_RETROSPECTIVE.md](PROJECT_RETROSPECTIVE.md)。
